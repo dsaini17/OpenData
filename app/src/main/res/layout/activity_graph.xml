@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5sp"
+    tools:context="com.example.devesh.opendata.Graph"
+    android:orientation="vertical"
+    android:scrollbars="vertical"
+    >
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:layout_width="368dp"
+        android:layout_height="400dp"
+        android:id="@+id/barGraph"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp"></com.github.mikephil.charting.charts.BarChart>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/yearEditText"
+        android:inputType="number"
+        />
+
+   <!-- <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerMonth"
+        ></Spinner> -->
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/showData"
+        android:text="Show Results"
+        />
+
+</LinearLayout>

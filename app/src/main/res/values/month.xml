@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="monthselect">
+        <item>Jan-Feb</item>
+        <item>Mar-May</item>
+        <item>Jun-Sept</item>
+        <item>Oct-Dec</item>
+    </string-array>
+</resources>
