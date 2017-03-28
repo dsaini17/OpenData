@@ -41,7 +41,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback{
     SupportMapFragment supportMapFragment;
     RequestQueue requestQueue;
     public static final String data_URL = "https://data.gov.in/api/datastore/resource.json?resource_id=37670b6f-c236-49a7-8cd7-cc2dc610e32d&api-key=00fe157bc3c6a164568b1fc84c5766b0";
-g
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
