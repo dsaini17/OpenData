@@ -32,9 +32,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Map extends AppCompatActivity implements OnMapReadyCallback,GoogleMap.OnMapClickListener{
+public class Map extends AppCompatActivity implements OnMapReadyCallback{
 
-  //  MapView mapView;
     public static final String TAG = "MapActivity";
     Button fetchData;
     ArrayList<Hospital> coordinateDataList;
@@ -42,28 +41,15 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback,GoogleM
     SupportMapFragment supportMapFragment;
     RequestQueue requestQueue;
     public static final String data_URL = "https://data.gov.in/api/datastore/resource.json?resource_id=37670b6f-c236-49a7-8cd7-cc2dc610e32d&api-key=00fe157bc3c6a164568b1fc84c5766b0";
-
+g
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
-
-//        mapFragment = MapFragment.newInstance();
-//        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-//        fragmentTransaction.add(R.id.fragmentMap,mapFragment);
-//        fragmentTransaction.commit();
-
         supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         supportMapFragment.getMapAsync(this);
-
-//        mapView = (MapView) findViewById(R.id.fragmentMap);
-//        mapView.getMapAsync(this);
-
         coordinateDataList = new ArrayList<>();
-//        mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.fragmentMap);
-//        mapFragment.getMapAsync(this);
-
         fetchData = (Button) findViewById(R.id.fetchData);
         requestQueue = Volley.newRequestQueue(getApplicationContext());
 
@@ -130,45 +116,54 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback,GoogleM
 
         }
 //        mapView.getMapAsync(this);
-        supportMapFragment.getMapAsync(this);
+//        supportMapFragment.getMapAsync(this);
     }
 
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    public void onMapReady(final GoogleMap googleMap) {
         map = googleMap;
-//        googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-//            @Override
-//            public void onMapClick(LatLng latLng) {
-//                Log.d(TAG,latLng.latitude+" "+latLng.longitude);
-//                map.addMarker(new MarkerOptions().position(latLng).title("Touch_1"));
-//            }
-//        });
-//        googleMap.addMarker(new MarkerOptions()
-//                .position(new LatLng(10, 10))
-//                .title("Hello world"));
-//        if (googleMap == null) {
-//            Toast.makeText(getApplicationContext(),"Map = null",Toast.LENGTH_SHORT).show();
-//        }
-            int length = coordinateDataList.size();
-       // Log.d(TAG,"Data Mark "+length);
+
+        map.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+                float x = (float) latLng.latitude , y = (float) latLng.longitude;
+                int ind=-1;
+                float minDis=10000000;
+                int len = coordinateDataList.size();
+                for(int i=0;i<len;i++){
+                    Hospital hospital = coordinateDataList.get(i);
+                    float localDis = (float) Math.sqrt((double)(((hospital.getxCoordinate())-x)*(hospital.getxCoordinate())-x)+(hospital.getyCoordinate()-y)*(hospital.getyCoordinate()-y));
+                    if(localDis<minDis){
+                        minDis=localDis;
+                        ind=i;
+                    }
+                }
+                LatLng latLng1 = new LatLng((double)coordinateDataList.get(ind).getxCoordinate(),(double)coordinateDataList.get(ind).getyCoordinate());
+                Log.v(TAG,latLng+" "+latLng1);
+                googleMap.addMarker(new MarkerOptions().position(latLng).title("You are here"));
+                googleMap.addMarker(new MarkerOptions().position(latLng1).title("Nearest Hospital"));
+            }
+        });
+
+
+      /*    Data from API
+
+      int length = coordinateDataList.size();
         for(int i=0;i<length;i++){
 
             Hospital hospital = coordinateDataList.get(i);
-        //    Log.d(TAG, String.valueOf(hospital));
-            Marker marker = googleMap.addMarker(new MarkerOptions()
+
+    *//*
+           Static Marker
+           Marker marker = googleMap.addMarker(new MarkerOptions()
                     .position(new LatLng(37.7750, 122.4183))
                     .title("San Francisco")
                     .snippet("Population: 776733"));
-
+*//*
             googleMap.addMarker(new MarkerOptions().position(new LatLng(hospital.getxCoordinate(),hospital.getyCoordinate())).title(hospital.getHospitalName()).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher_round)));
             //googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(hospital.getxCoordinate(),-hospital.getyCoordinate()),14));
-        }
+        }*/
     }
 
-    @Override
-    public void onMapClick(LatLng latLng) {
-        Log.d(TAG,latLng.latitude+" "+latLng.longitude+"123");
-        map.addMarker(new MarkerOptions().position(latLng).title("Touch_2"));
-        //mapView.getMapAsync(this);
-    }
+
 }
