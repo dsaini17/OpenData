@@ -30,10 +30,11 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     RequestQueue requestQueue;
+    public static final String ARHAR_DAL="https://data.gov.in/api/datastore/resource.json?resource_id=f6e6eee2-21f9-4e81-a82c-afd7b8d99f64&api-key=00fe157bc3c6a164568b1fc84c5766b0";
     public static final String API_KEY = "00fe157bc3c6a164568b1fc84c5766b0";
     public static final String URL = "https://data.gov.in/api/datastore/resource.json?resource_id=6176ee09-3d56-4a3b-8115-21841576b2f6";
     public static final String TAG = "MainActivity";
-    Button get_Button,graph_Button;
+    Button get_Button,graph_Button,map_Button;
     EditText pincode_EditText;
     TextView officename_TextView , districtname_TextView , statename_TextView ;
     public static final String hit_thisURL = "https://data.gov.in/api/datastore/resource.json?resource_id=6176ee09-3d56-4a3b-8115-21841576b2f6&api-key=00fe157bc3c6a164568b1fc84c5766b0";
@@ -59,6 +60,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(),Graph.class));
             }
         });
+
+        map_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                startActivity(new Intent(getApplicationContext(),Map.class));
+            }
+        });
     }
 
     public void init(){
@@ -70,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         graph_Button = (Button) findViewById(R.id.graphActivity);
         statename_TextView = (TextView) findViewById(R.id.statename_TextView);
         dataList = new ArrayList<>();
+        map_Button = (Button) findViewById(R.id.mapActivity);
     }
 
     public void onClickEvent(){
