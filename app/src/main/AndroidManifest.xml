@@ -14,9 +14,7 @@
         android:roundIcon="@mipmap/images"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity"></activity>
         <activity android:name=".Graph" />
 
         <meta-data
@@ -24,7 +22,8 @@
             android:value="AIzaSyDl5cG4Cwg_SpJPzB_Vf9nRYErYbpDb5zs" />
 
         <activity android:name=".Map" />
-        <activity android:name=".SplashActivity"
+        <activity
+            android:name=".SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
@@ -33,6 +32,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Chart"></activity>
     </application>
 
 </manifest>

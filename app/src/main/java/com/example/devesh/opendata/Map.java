@@ -141,7 +141,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback{
                 LatLng latLng1 = new LatLng((double)coordinateDataList.get(ind).getxCoordinate(),(double)coordinateDataList.get(ind).getyCoordinate());
                 Log.v(TAG,latLng+" "+latLng1);
                 googleMap.addMarker(new MarkerOptions().position(latLng).title("You are here"));
-                googleMap.addMarker(new MarkerOptions().position(latLng1).title("Nearest Hospital"));
+                googleMap.addMarker(new MarkerOptions().position(latLng1).title("Nearest Hospital").snippet(coordinateDataList.get(ind).getHospitalName()));
             }
         });
 

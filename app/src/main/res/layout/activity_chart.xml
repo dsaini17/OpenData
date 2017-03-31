@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.example.devesh.opendata.Chart">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:layout_width="match_parent"
+        android:layout_height="380sp"
+        android:id="@+id/pieChart"
+        />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="300sp"
+            android:id="@+id/oneString"
+            android:layout_height="wrap_content"
+            android:hint="Product"
+            android:inputType="text"
+            />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:id="@+id/oneInteger"
+            android:hint="Share"
+            android:inputType="number"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_width="300sp"
+                android:id="@+id/twoString"
+                android:layout_height="wrap_content"
+                android:hint="Product"
+                android:inputType="text"
+                />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:id="@+id/twoInteger"
+                android:hint="Share"
+                android:inputType="number"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_width="300sp"
+                android:id="@+id/threeString"
+                android:layout_height="wrap_content"
+                android:hint="Product"
+                android:inputType="text"
+                />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:id="@+id/threeInteger"
+                android:hint="Share"
+                android:inputType="number"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PLOT"
+            android:id="@+id/plotButton"
+            />
+
+    </LinearLayout>
+
+</ScrollView>
