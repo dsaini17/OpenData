@@ -30,9 +30,6 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     RequestQueue requestQueue;
-    public static final String ARHAR_DAL="https://data.gov.in/api/datastore/resource.json?resource_id=f6e6eee2-21f9-4e81-a82c-afd7b8d99f64&api-key=00fe157bc3c6a164568b1fc84c5766b0";
-    public static final String API_KEY = "00fe157bc3c6a164568b1fc84c5766b0";
-    public static final String URL = "https://data.gov.in/api/datastore/resource.json?resource_id=6176ee09-3d56-4a3b-8115-21841576b2f6";
     public static final String TAG = "MainActivity";
     Button get_Button,graph_Button,map_Button,chart_Button,gitButton;
     EditText pincode_EditText;
